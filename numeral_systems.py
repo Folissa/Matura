@@ -2,6 +2,17 @@ import math
 import time
 
 
+def strip_from_zero(number_to_strip):
+    i = 0
+    while True:
+        if number_to_strip[i] == "0":
+            number_to_strip = number_to_strip[i+1:]
+        else:
+            break
+        i += 1
+    return number_to_strip
+
+
 def decimal_to_other_system(decimal_number, other_system_base):
     hexadecimal = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
     number_in_new_system = ""
@@ -77,15 +88,36 @@ def bin_to_others(binary_number, numeral_system_base):
     return new_number
 
 
-# TODO: Make conversion from others to BIN.
+def others_to_bin(number_in_other_system, numeral_system_base):
+    hexadecimal = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "A": 10, "B": 11,
+                   "C": 12, "D": 13, "E": 14, "F": 15}
+    grouped_digits = []
+    numeral_base_grouping_number = int(math.log2(int(numeral_system_base)))
+    for i in range(len(number_in_other_system)):
+        grouped_digits.append([])
+        if numeral_system_base == "16":
+            for bin_digit in decimal_to_other_system(hexadecimal.get(number_in_other_system[i]), 2):
+                grouped_digits[i].append(str(bin_digit))
+        else:
+            for bin_digit in decimal_to_other_system(int(number_in_other_system[i]), 2):
+                grouped_digits[i].append(str(bin_digit))
+        while len(grouped_digits[i]) % numeral_base_grouping_number != 0:
+            grouped_digits[i].reverse()
+            grouped_digits[i].append("0")
+            grouped_digits[i].reverse()
+    new_number = ""
+    for i in range(len(grouped_digits)):
+        for j in range(len(grouped_digits[i])):
+            new_number += grouped_digits[i][j]
+    return new_number
 
 
 while True:
     action = input("Please choose an action you want to perform:\n"
-                   "(1) Convert a decimal to a number in a different numeral system (2, 4, 8 or 16).\n"
-                   "(2) Convert a number in different numeral system (2, 4, 8 or 16) to a decimal.\n"
-                   "(3) Convert a binary number to other system (4, 8 or 16).\n"
-                   "(4)\n"
+                   "(1) Convert a decimal number to a number in a different numeral system (2, 4, 8 or 16).\n"
+                   "(2) Convert a number in different numeral system (2, 4, 8 or 16) to decimal.\n"
+                   "(3) Convert a binary number to number in other system (4, 8 or 16).\n"
+                   "(4) Convert a number in different numeral system (4, 8 or 16) to binary.\n"
                    "> ")
     if action == "1":
         number = input("Please input an integer, decimal number you want to convert: ")
@@ -103,6 +135,11 @@ while True:
         number = input("Please input a binary number you want to convert to the other system: ")
         numeral_system = input("What system do you want to use in a new number?: ")
         print(f"Binary number {number} in new system ({numeral_system}) is {bin_to_others(number, numeral_system)}.")
+        break
+    elif action == "4":
+        number = input("Please input a number in the other system you want to convert into binary: ")
+        numeral_system = input("What is the numer system of this number?: ")
+        print(f"Number {number} in the {numeral_system} system in binary is {others_to_bin(number, numeral_system)}.")
         break
     else:
         print("There is no such option.")
