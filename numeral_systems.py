@@ -1,6 +1,9 @@
 import math
 import time
 
+hexadecimal = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "A": 10, "B": 11,
+               "C": 12, "D": 13, "E": 14, "F": 15}
+
 
 def strip_from_zero(number_to_strip):
     i = 0
@@ -14,11 +17,11 @@ def strip_from_zero(number_to_strip):
 
 
 def decimal_to_other_system(decimal_number, other_system_base):
-    hexadecimal = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+    hexadecimal_strings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
     number_in_new_system = ""
     if other_system_base == "16":
         while decimal_number != 0:
-            number_in_new_system = hexadecimal[(decimal_number % 16)] + number_in_new_system
+            number_in_new_system = hexadecimal_strings[(decimal_number % 16)] + number_in_new_system
             decimal_number //= 16
     else:
         while decimal_number != 0:
@@ -28,8 +31,6 @@ def decimal_to_other_system(decimal_number, other_system_base):
 
 
 def other_system_to_decimal(number_in_other_system, numeral_system_base):
-    hexadecimal = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "A": 10, "B": 11,
-                   "C": 12, "D": 13, "E": 14, "F": 15}
     list_of_digits = []
     decimal_number = 0
     for i in (str(number_in_other_system)):
@@ -60,8 +61,8 @@ def other_system_to_decimal(number_in_other_system, numeral_system_base):
 
 
 def bin_to_others(binary_number, numeral_system_base):
-    hexadecimal = {0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "A", 11: "B",
-                   12: "C", 13: "D", 14: "E", 15: "F"}
+    hexadecimal_str = {0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9", 10: "A", 11: "B",
+                       12: "C", 13: "D", 14: "E", 15: "F"}
     numeral_base_grouping_number = int(math.log2(int(numeral_system_base)))
     grouped_digits = []
     grouped_digits_list = []
@@ -80,7 +81,7 @@ def bin_to_others(binary_number, numeral_system_base):
         if numeral_system_base == "16":
             for j in range(len(i)):
                 new_digit += 2 ** j * int(i[j])
-            new_number = new_number + hexadecimal.get(new_digit)
+            new_number = new_number + hexadecimal_str.get(new_digit)
         else:
             for j in range(len(i)):
                 new_digit += 2 ** j * int(i[j])
@@ -89,8 +90,6 @@ def bin_to_others(binary_number, numeral_system_base):
 
 
 def others_to_bin(number_in_other_system, numeral_system_base):
-    hexadecimal = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "A": 10, "B": 11,
-                   "C": 12, "D": 13, "E": 14, "F": 15}
     grouped_digits = []
     numeral_base_grouping_number = int(math.log2(int(numeral_system_base)))
     for i in range(len(number_in_other_system)):
