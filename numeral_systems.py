@@ -5,6 +5,43 @@ hexadecimal = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "
                "C": 12, "D": 13, "E": 14, "F": 15}
 
 
+def main():
+    while True:
+        action = input("Please choose an action you want to perform:\n"
+                       "(1) Convert a decimal number to a number in a different numeral system (2, 4, 8 or 16).\n"
+                       "(2) Convert a number in different numeral system (2, 4, 8 or 16) to decimal.\n"
+                       "(3) Convert a binary number to number in other system (4, 8 or 16).\n"
+                       "(4) Convert a number in different numeral system (4, 8 or 16) to binary.\n"
+                       "> ")
+        if action == "1":
+            number = input("Please input an integer, decimal number you want to convert: ")
+            numeral_system = input("What system do you want to use?: ")
+            print(f"Number {number} in {numeral_system} base system is "
+                  f"{decimal_to_other_system(int(number), int(numeral_system))}.")
+            break
+        elif action == "2":
+            number = input("Please input a number you want to convert to a decimal: ")
+            numeral_system = input("What is the numeral system of this number?: ")
+            print(f"Number {number} in {numeral_system} base system is "
+                  f"{other_system_to_decimal(number, numeral_system)} as the decimal.")
+            break
+        elif action == "3":
+            number = input("Please input a binary number you want to convert to the other system: ")
+            numeral_system = input("What system do you want to use in a new number?: ")
+            print(
+                f"Binary number {number} in new system ({numeral_system}) is {bin_to_others(number, numeral_system)}.")
+            break
+        elif action == "4":
+            number = input("Please input a number in the other system you want to convert into binary: ")
+            numeral_system = input("What is the numer system of this number?: ")
+            print(
+                f"Number {number} in the {numeral_system} system in binary is {others_to_bin(number, numeral_system)}.")
+            break
+        else:
+            print("There is no such option.")
+            time.sleep(1.5)
+
+
 def strip_from_zero(number_to_strip):
     i = 0
     while True:
@@ -111,35 +148,5 @@ def others_to_bin(number_in_other_system, numeral_system_base):
     return new_number
 
 
-while True:
-    action = input("Please choose an action you want to perform:\n"
-                   "(1) Convert a decimal number to a number in a different numeral system (2, 4, 8 or 16).\n"
-                   "(2) Convert a number in different numeral system (2, 4, 8 or 16) to decimal.\n"
-                   "(3) Convert a binary number to number in other system (4, 8 or 16).\n"
-                   "(4) Convert a number in different numeral system (4, 8 or 16) to binary.\n"
-                   "> ")
-    if action == "1":
-        number = input("Please input an integer, decimal number you want to convert: ")
-        numeral_system = input("What system do you want to use?: ")
-        print(f"Number {number} in {numeral_system} base system is "
-              f"{decimal_to_other_system(int(number), int(numeral_system))}.")
-        break
-    elif action == "2":
-        number = input("Please input a number you want to convert to a decimal: ")
-        numeral_system = input("What is the numeral system of this number?: ")
-        print(f"Number {number} in {numeral_system} base system is "
-              f"{other_system_to_decimal(number, numeral_system)} as the decimal.")
-        break
-    elif action == "3":
-        number = input("Please input a binary number you want to convert to the other system: ")
-        numeral_system = input("What system do you want to use in a new number?: ")
-        print(f"Binary number {number} in new system ({numeral_system}) is {bin_to_others(number, numeral_system)}.")
-        break
-    elif action == "4":
-        number = input("Please input a number in the other system you want to convert into binary: ")
-        numeral_system = input("What is the numer system of this number?: ")
-        print(f"Number {number} in the {numeral_system} system in binary is {others_to_bin(number, numeral_system)}.")
-        break
-    else:
-        print("There is no such option.")
-        time.sleep(1.5)
+if __name__ == "__main__":
+    main()

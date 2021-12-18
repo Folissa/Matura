@@ -1,3 +1,8 @@
+def main():
+    user_string = input("Input a string: ")
+    print(is_palindrome_list(user_string))
+
+
 # palindrome is a string which is identical reversed to the original
 def is_palindrome(string):
     if string == string[::-1]:
@@ -18,5 +23,5 @@ def is_palindrome_list(string):
     return True
 
 
-print(is_palindrome("anna"))
-print(is_palindrome_list("anna"))
+if __name__ == "__main__":
+    main()
