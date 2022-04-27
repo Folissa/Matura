@@ -1,10 +1,3 @@
-def main():
-    first_number = int(input("First number:"))
-    second_number = int(input("Second number:"))
-    print(f"NWD({first_number},{second_number}) = {optimized_euclidean_algorithm(first_number, second_number)}")
-    print(f"NWW({first_number},{second_number}) = {NWW(first_number, second_number)}")
-
-
 # for first_number and second_number being an integer
 def euclidean_algorithm(first_number, second_number):
     # for second_number > 0
@@ -30,9 +23,22 @@ def optimized_euclidean_algorithm(first_number, second_number):
     return first_number
 
 
+def recursive_euclidean(first_number, second_number):
+    if second_number != 0:
+        recursive_euclidean(second_number, first_number % second_number)
+    return first_number
+
+
 def NWW(first_number, second_number):
     # if a != 0 and b !=0
     return first_number * second_number // euclidean_algorithm(first_number, second_number)
+
+
+def main():
+    first_number = int(input("First number:"))
+    second_number = int(input("Second number:"))
+    print(f"NWD({first_number},{second_number}) = {optimized_euclidean_algorithm(first_number, second_number)}")
+    print(f"NWW({first_number},{second_number}) = {NWW(first_number, second_number)}")
 
 
 if __name__ == "__main__":

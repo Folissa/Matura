@@ -1,12 +1,3 @@
-def main():
-    user_list = [23, 2, 0, 42, 23, 42, 2000, 1, 32]
-    list_length = len(user_list)
-    quick_sort_hoare(user_list, 0, list_length - 1)
-    print("Sorted array is:")
-    for i in range(list_length):
-        print("%d" % user_list[i], end=" ")
-
-
 #  Lomuto partition scheme
 def partitioning_lomuto(number_list, lesser, greater):
     i = lesser - 1
@@ -54,6 +45,15 @@ def quick_sort_hoare(number_list, low, high):
         partitioning_index = partitioning_hoare(number_list, low, high)
         quick_sort_hoare(number_list, low, partitioning_index - 1)
         quick_sort_hoare(number_list, partitioning_index + 1, high)
+
+
+def main():
+    user_list = [23, 2, 0, 42, 23, 42, 2000, 1, 32]
+    list_length = len(user_list)
+    quick_sort_hoare(user_list, 0, list_length - 1)
+    print("Sorted array is:")
+    for i in range(list_length):
+        print("%d" % user_list[i], end=" ")
 
 
 if __name__ == "__main__":

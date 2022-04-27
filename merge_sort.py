@@ -1,14 +1,3 @@
-def main():
-    # if two lists are sorted we can merge them with merge()
-    user_first_list = [3, 5, 23, 62, 100, 300]
-    user_second_list = [1, 4, 5, 24, 299, 2900, 5000]
-    print(merge(user_first_list, user_second_list))
-    # sorting one, not sorted list
-    user_list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-    merge_sort(user_list)
-    print(user_list)
-
-
 def merge(first_list, second_list):
     first_length = len(first_list)
     second_length = len(second_list)
@@ -53,6 +42,17 @@ def merge_sort(list_to_sort):
             list_to_sort[k] = right_list[j]
             j += 1
             k += 1
+
+
+def main():
+    # if two lists are sorted we can merge them with merge()
+    user_first_list = [3, 5, 23, 62, 100, 300]
+    user_second_list = [1, 4, 5, 24, 299, 2900, 5000]
+    print(merge(user_first_list, user_second_list))
+    # sorting one, not sorted list
+    user_list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    merge_sort(user_list)
+    print(user_list)
 
 
 if __name__ == "__main__":

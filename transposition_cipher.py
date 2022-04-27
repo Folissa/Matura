@@ -1,19 +1,3 @@
-def main():
-    user_string = input("Input a string to cipher: ")
-    ciphering_metod = input("How would you like to cipher your string?:\n"
-                            "(1) Transposition adjacent,\n"
-                            "(2) Transposition consonants.\n"
-                            "> ")
-    if ciphering_metod == "1":
-        ciphered = transposition_adjacent(user_string)
-        print(f"Your string before: {user_string}, and after ciphering: {ciphered}.")
-        print(f"Deciphering: {transposition_adjacent(ciphered)}.")
-    elif ciphering_metod == "2":
-        ciphered = transposition_consonants(user_string)
-        print(f"Your string before: {user_string}, and after ciphering: {ciphered}.")
-        print(f"Deciphering: {transposition_consonants_decipher(ciphered)}.")
-
-
 # transposition two adjacent digits
 def transposition_adjacent(string):
     string_length = len(string)
@@ -88,6 +72,22 @@ def is_a_consonant(char):
         return 0
     else:
         return 1
+
+
+def main():
+    user_string = input("Input a string to cipher: ")
+    ciphering_metod = input("How would you like to cipher your string?:\n"
+                            "(1) Transposition adjacent,\n"
+                            "(2) Transposition consonants.\n"
+                            "> ")
+    if ciphering_metod == "1":
+        ciphered = transposition_adjacent(user_string)
+        print(f"Your string before: {user_string}, and after ciphering: {ciphered}.")
+        print(f"Deciphering: {transposition_adjacent(ciphered)}.")
+    elif ciphering_metod == "2":
+        ciphered = transposition_consonants(user_string)
+        print(f"Your string before: {user_string}, and after ciphering: {ciphered}.")
+        print(f"Deciphering: {transposition_consonants_decipher(ciphered)}.")
 
 
 if __name__ == "__main__":

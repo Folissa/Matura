@@ -1,3 +1,7 @@
+def triangle_inequality(a, b, c):
+    return b + c > a > 0 and a + b > c > 0 and a + c > b > 0
+
+
 def main():
     first_side = int(input("Input the length of first side of the triangle: "))
     second_side = int(input("Input the length of second side of the triangle: "))
@@ -6,10 +10,6 @@ def main():
         print("You can make a triangle.")
     else:
         print("You can't make a triangle.")
-
-
-def triangle_inequality(a, b, c):
-    return b + c > a > 0 and a + b > c > 0 and a + c > b > 0
 
 
 if __name__ == "__main__":

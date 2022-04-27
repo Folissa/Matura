@@ -2,12 +2,6 @@
 import math
 
 
-def main():
-    for j in range(10):
-        if is_prime(j):
-            print(j)
-
-
 def is_prime(number):
     if number < 2:
         return False
@@ -15,6 +9,12 @@ def is_prime(number):
         if number % i == 0:
             return False
     return True
+
+
+def main():
+    for j in range(10):
+        if is_prime(j):
+            print(j)
 
 
 if __name__ == "__main__":

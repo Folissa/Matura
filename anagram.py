@@ -1,11 +1,4 @@
 # anagram to wyraz lub zdanie powstałe po przestawieniu liter innego wyrazu (zdania)
-
-def main():
-    first_word = input("Input first word: ")
-    second_word = input("Input second word: ")
-    print(anagram(first_word, second_word))
-
-
 def anagram(first_word, second_word):
     chars = {}
     if len(first_word) != len(second_word):
@@ -23,6 +16,12 @@ def anagram(first_word, second_word):
             if chars[i] != 0:
                 return False
         return True
+
+
+def main():
+    first_word = input("Input first word: ")
+    second_word = input("Input second word: ")
+    print(anagram(first_word, second_word))
 
 
 if __name__ == "__main__":
